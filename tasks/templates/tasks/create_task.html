@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add Task</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <script src="script.js" defer></script> <!-- Link to your JavaScript file -->
+
+    <style>
+        .mx-auto {
+            margin-right: auto !important;
+            margin-left: auto !important;
+            margin-top: 50px;
+        }
+        h2{
+            margin-top:20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <form class="col-8 mx-auto card p-3 shadow-lg" method="POST">
+            <a href="{% url 'all_task' %}" class="btn btn-success">View Tasks</a>
+
+            {% csrf_token %}
+            <h2>Add Task</h2>
+
+            <!-- Task Description -->
+            <div class="mb-3">
+              <label for="task_description" class="form-label">Task Description</label>
+              <textarea class="form-control" id="task_description" name="task_description" required></textarea>
+            </div>
+
+            <!-- Category -->
+            <div class="mb-3">
+              <label for="task_category" class="form-label">Category</label>
+              <input type="text" class="form-control" id="task_category" name="task_category" required>
+            </div>
+     
+            <!-- Duration -->
+            <div class="mb-3">
+                <label for="duration" class="form-label">Duration (HH:MM)</label>
+                <input type="text" name="duration" id="duration" required class="form-control" placeholder="e.g., 02:30">
+            </div>
+            
+            <!-- Status -->
+            <div class="mb-3">
+                <label for="statusSelect" class="form-label">Status</label>
+                <select class="form-control" id="statusSelect" name="status" required>
+                    <option value="pending">Pending</option>
+                    <option value="done">Done</option>
+                </select>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+    </div>
+
+</body>
+</html>
