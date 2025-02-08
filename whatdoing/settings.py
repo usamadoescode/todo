@@ -25,8 +25,9 @@ SECRET_KEY = 'django-insecure-x%no=*phwmxd!%)4gi^k=i&gl$a)w8h5+xnaeg=r-tdi+6#dog
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", ".vercel.app",'*']
 
+CSRF_TRUSTED_ORIGINS = ["https://*.vercel.app"]
 
 # Application definition
 
@@ -75,12 +76,24 @@ WSGI_APPLICATION = 'whatdoing.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'todo',  # Replace with your database name
+        'USER': 'postgres',       # Replace with your PostgreSQL username
+        'PASSWORD': 'root',   # Replace with your PostgreSQL password
+        'HOST': 'localhost',           # Change to your database host if deployed (e.g., AWS, Heroku)
+        'PORT': '5432',                # Default PostgreSQL port
     }
 }
+
 
 
 # Password validation
@@ -128,4 +141,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_URL = '/static/'
 
 # Directory where static files are stored
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Collect all static files here
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # Your local static files
