@@ -3,28 +3,34 @@ from django.shortcuts import render , redirect
 from .models import Add_task # type: ignore
 
 
-def create_task (request):
+def create_task(request):
     if request.method == "POST":
-        data= request.POST
-        task_name= data.get('task_description')
-        task_category= data.get('task_category')
-        duration=data.get('duration')
-        status=data.get('status')
+        data = request.POST
+        task_name = data.get('task_description')
+        task_category = data.get('task_category')
+        duration = data.get('duration')
+        status = data.get('status', 'pending')  # Default to 'pending' if not provided
 
+        # 🔹 Handle duration safely
         try:
-            # Parse duration as hours or minutes (e.g., '2:30' -> 2 hours, 30 mins)
-            hours, minutes = map(int, duration.split(':'))
-            duration = timedelta(hours=hours, minutes=minutes)
+            if duration:
+                hours, minutes = map(int, duration.split(':'))
+                duration = timedelta(hours=hours, minutes=minutes)
+            else:
+                duration = timedelta()  # Default to 0 if duration is empty
         except (ValueError, AttributeError):
-            duration = timedelta()  
-            # Default to 0 if parsing fails
+            duration = timedelta()
+
+        # 🔹 Create task (without user)
         Add_task.objects.create(
             task_name=task_name,
             task_category=task_category,
             duration=duration,
             status=status,
         )
+
         return redirect('all_task')
+
     return render(request, 'tasks/create_task.html')
 
 def all_task(request):

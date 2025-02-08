@@ -1,7 +1,6 @@
 import datetime
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.models import User
 
 
 class Add_task(models.Model):
@@ -9,7 +8,6 @@ class Add_task(models.Model):
         ('Done', 'done'),
         ('Pending', 'pending')
     ]
-    user = models.ForeignKey(User, on_delete=models.CASCADE)  # Ensure this field exists
 
     task_name = models.CharField(max_length=255, blank=False, null=False)
     task_category = models.CharField(max_length=255, blank=False, null=False)
