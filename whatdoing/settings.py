@@ -15,6 +15,19 @@ import os
 import os
 import dj_database_url
 from pathlib import Path
+
+
+import os
+import dj_database_url # type: ignore
+from dotenv import load_dotenv # type: ignore
+
+# Load environment variables from .env file
+load_dotenv()
+
+DATABASES = {
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'), conn_max_age=600)
+}
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -86,16 +99,16 @@ WSGI_APPLICATION = 'whatdoing.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'todo',  # Replace with your database name
-        'USER': 'postgres',       # Replace with your PostgreSQL username
-        'PASSWORD': 'root',   # Replace with your PostgreSQL password
-        'HOST': 'localhost',           # Change to your database host if deployed (e.g., AWS, Heroku)
-        'PORT': '5432',                # Default PostgreSQL port
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'todo',  # Replace with your database name
+#         'USER': 'postgres',       # Replace with your PostgreSQL username
+#         'PASSWORD': 'root',   # Replace with your PostgreSQL password
+#         'HOST': 'localhost',           # Change to your database host if deployed (e.g., AWS, Heroku)
+#         'PORT': '5432',                # Default PostgreSQL port
+#     }
+# }
 
 
 
