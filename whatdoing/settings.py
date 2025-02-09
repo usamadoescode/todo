@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 import os
-import dj_database_url
+import dj_database_url # type: ignore
 from pathlib import Path
 
 
@@ -73,7 +73,8 @@ ROOT_URLCONF = 'whatdoing.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # Ensure the path is correct
+        'DIRS': [],  # Ensure the path is correct
+        'APP_DIRS': True,  # ✅ Auto-detect templates in apps
 
         'APP_DIRS': True,
         'OPTIONS': {
