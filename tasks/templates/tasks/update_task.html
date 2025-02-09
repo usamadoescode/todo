@@ -27,7 +27,7 @@
         <form class="col-8 mx-auto card p-4 shadow-lg" method="POST">
             {% csrf_token %}
             
-            <a href="{% url 'all_task' %}" class="btn btn-success mb-3">View Tasks</a>
+            <a href="{% url 'tasks:all_task' %}" class="btn btn-success mb-3">View Tasks</a>
             
             <h2 class="text-center">Update Task</h2>
 
