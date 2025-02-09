@@ -1,9 +1,11 @@
 from django.contrib import admin
 from django.urls import path, include
-from django.shortcuts import redirect
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('', include('accounts.urls')),  
-     path("tasks/", include("tasks.urls")),  # Tasks App
+    
+    # ✅ Default URL now loads `accounts/urls.py`, which shows login by default
+    path("", include("accounts.urls")),  
+
+    path("tasks/", include("tasks.urls")),  
 ]

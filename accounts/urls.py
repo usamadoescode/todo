@@ -1,8 +1,9 @@
 from django.urls import path
-from .views import register, user_login, user_logout
-
+from . import views
+app_name = "tasks"
 urlpatterns = [
-    path(" ", user_login, name="login"),
-    path("register/", register, name="register"),
-    path("logout/", user_logout, name="logout"),
+    
+    path("", views.user_login, name="user_login"),  # ✅ Default page is login
+    path("register/", views.register, name="register"),
+    path("logout/", views.user_logout, name="logout"),
 ]

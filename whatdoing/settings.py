@@ -73,9 +73,11 @@ ROOT_URLCONF = 'whatdoing.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],  # Ensure the path is correct
-        'APP_DIRS': True,  # ✅ Auto-detect templates in apps
-
+        "DIRS": [
+            os.path.join(BASE_DIR, "templates"),  # Global templates folder
+            os.path.join(BASE_DIR, "accounts", "templates"),  # Accounts app templates
+            os.path.join(BASE_DIR, "tasks", "templates"),  # Tasks app templates
+        ],  # ✅ Correctly closed brackets
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
