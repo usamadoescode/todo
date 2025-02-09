@@ -8,22 +8,22 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)  # Log in user after registration
-            return redirect("all_task")  # ✅ Redirect to the task list page
+            login(request, user)  
+            return redirect("tasks:all_task")  # ✅ Redirect to the task list in 'tasks' app
     else:
         form = UserCreationForm()
     return render(request, "accounts/register.html", {"form": form})
 
 def user_login(request):
     if request.user.is_authenticated:
-        return redirect("all_task")  # ✅ Redirect to tasks if already logged in
+        return redirect("tasks:all_task")  # ✅ Redirect to 'all_task' after login
     
     if request.method == "POST":
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect("all_task")  # ✅ Redirect after login
+            return redirect("tasks:all_task")  # ✅ Redirect after login
     else:
         form = AuthenticationForm()
     return render(request, "accounts/login.html", {"form": form})
@@ -31,4 +31,4 @@ def user_login(request):
 @login_required
 def user_logout(request):
     logout(request)
-    return redirect("login")  # ✅ Redirect to login after logout
+    return redirect("accounts:login")  # ✅ Redirect correctly

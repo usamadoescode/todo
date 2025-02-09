@@ -1,9 +1,10 @@
 from django.urls import path
 from . import views
-app_name = "tasks"
+
+app_name = "accounts"  # ✅ Fix the namespace
+
 urlpatterns = [
-    
-    path("", views.user_login, name="user_login"),  # ✅ Default page is login
-    path("register/", views.register, name="register"),  # ✅ Register route
-    path("logout/", views.user_logout, name="logout"),
+    path("", views.user_login, name="user_login"),  # ✅ Login page
+    path("register/", views.register, name="register"),  # ✅ Register page
+    path("logout/", views.user_logout, name="logout"),  # ✅ Logout page
 ]
