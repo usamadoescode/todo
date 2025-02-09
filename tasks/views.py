@@ -34,7 +34,7 @@ def create_task(request):
             session_id=session_id  # Link task to session
         )
 
-        return redirect('all_task')  # Redirect to task list
+        return redirect("tasks:all_task")  # ✅ Correct
 
     return render(request, 'tasks/create_task.html')
 
