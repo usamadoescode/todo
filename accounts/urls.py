@@ -1,12 +1,8 @@
-from django.contrib import admin
-from django.urls import path, include
-from django.shortcuts import redirect
-
-def redirect_to_login(request):
-    return redirect("login")  # Redirects to login page if user visits "/"
+from django.urls import path
+from .views import register, user_login, user_logout
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("", redirect_to_login, name="home"),  # Default to login page
-    path("accounts/", include("accounts.urls")),  # Includes your accounts app URLs
+    path(" ", user_login, name="login"),
+    path("register/", register, name="register"),
+    path("logout/", user_logout, name="logout"),
 ]
