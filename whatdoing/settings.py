@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tasks',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -88,6 +89,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'whatdoing.wsgi.application'
 
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "tasks"  # Redirect to tasks after login
+LOGOUT_REDIRECT_URL = "login"  # Redirect to login after logout
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # Keep user logged in after closing browser
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 7  # 7 days session timeout
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
