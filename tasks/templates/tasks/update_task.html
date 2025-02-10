@@ -39,9 +39,23 @@
 
             <!-- Category -->
             <div class="mb-3">
-                <label for="task_category" class="form-label">Category</label>
-                <input type="text" class="form-control" id="task_category" name="task_category" value="{{ task.task_category }}" required>
+                <label for="task_category" class="form-label">Category*</label>
+                <select class="form-select" id="task_category" name="task_category" required>
+                    <option value="">Select a category</option>
+                    
+                    <option value="Personal">Personal</option>
+                    <option value="Work">Work</option>
+                    <option value="Shopping">Shopping</option>
+                    <option value="Study">Study</option>
+                    <option value="Prayer">Prayer</option>
+                    <option value="Medical">Medical</option>
+                    <option value="Grocery">Grocery</option>
+                    <option value="Home">Home</option>
+
+                    <option value="Other">Other</option>
+                </select>
             </div>
+
 
             <!-- Status -->
             <div class="mb-3">
