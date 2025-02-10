@@ -22,6 +22,12 @@
         .table td, .table th {
             white-space: nowrap;
         }
+        .btn.btn-primary {
+            background-color:  #198754;Light background */
+            color: #f8f9fa;  /* Ensure text remains visible */
+            border: 1px solid #ccc; /* Optional: Light border */
+            
+        }
     </style>
 </head>
 <body>
@@ -81,7 +87,7 @@
         <p>Created by Usama Ahmed | 
             <a href="https://www.linkedin.com/in/usamadoescode" target="_blank">LinkedIn</a> | 
             <a href="https://github.com/usamadoescode" target="_blank">GitHub</a>
-           <a href="{% url 'accounts:logout' %}" class="btn btn-primary" onclick="return confirm('Are you sure you want to log out?');">
+            <a href="{% url 'accounts:logout' %}" class="btn btn-success" onclick="return confirm('Are you sure you want to log out?');">
                 Logout
             </a>
             
