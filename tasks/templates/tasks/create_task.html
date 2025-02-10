@@ -48,28 +48,21 @@
                     <label for="task_category" class="form-label">Category*</label>
                     <select class="form-select" id="task_category" name="task_category" required>
                         <option value="">Select a category</option>
+                        
                         <option value="Personal">Personal</option>
                         <option value="Work">Work</option>
                         <option value="Shopping">Shopping</option>
                         <option value="Study">Study</option>
+                        <option value="Prayer">Prayer</option>
+                        <option value="Medical">Medical</option>
+                        <option value="Grocery">Grocery</option>
+                        <option value="Home">Home</option>
+
                         <option value="Other">Other</option>
                     </select>
                 </div>
 
-                <!-- Duration (HH:MM format) -->
-                <div class="mb-3">
-                    <label for="duration" class="form-label">Duration (HH:MM format)</label>
-                    <input 
-                        type="text" 
-                        class="form-control" 
-                        id="duration" 
-                        name="duration" 
-                        placeholder="e.g., 2:30 for 2 hours 30 minutes"
-                        pattern="^([0-9]|[1-9][0-9]):([0-5][0-9])$"
-                        title="Please enter time in HH:MM format (e.g., 2:30)"
-                    >
-                    <div class="form-text">Enter time in HH:MM format (e.g., 2:30 for 2 hours and 30 minutes)</div>
-                </div>
+              
 
                 <!-- Status -->
                 <div class="mb-3">
@@ -77,7 +70,6 @@
                     <select class="form-select" id="status" name="status" required>
                         <option value="">Select status</option>
                         <option value="Pending">Pending</option>
-                        <option value="In Progress">In Progress</option>
                         <option value="Completed">Completed</option>
                     </select>
                 </div>
@@ -98,7 +90,7 @@
         </p>
     </footer>
 
-    <!-- Optional JavaScript for duration validation -->
+    {% comment %} <!-- Optional JavaScript for duration validation -->
     <script>
         document.getElementById('duration').addEventListener('input', function(e) {
             let value = e.target.value;
@@ -119,6 +111,6 @@
                 e.target.setCustomValidity('');
             }
         });
-    </script>
+    </script> {% endcomment %}
 </body>
 </html>

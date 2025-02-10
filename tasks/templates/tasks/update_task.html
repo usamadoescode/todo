@@ -31,30 +31,24 @@
             
             <h2 class="text-center">Update Task</h2>
 
-            <!-- Task Description -->
+            <!-- Task Name -->
             <div class="mb-3">
-                <label for="task_description" class="form-label">Task Description</label>
-                <textarea class="form-control" id="task_description" name="task_description" required>{{ tasks.task_name }}</textarea>
+                <label for="task_name" class="form-label">Task Name</label>
+                <input type="text" class="form-control" id="task_name" name="task_name" value="{{ task.task_name }}" required>
             </div>
 
             <!-- Category -->
             <div class="mb-3">
                 <label for="task_category" class="form-label">Category</label>
-                <input type="text" value="{{ tasks.task_category }}" class="form-control" id="task_category" name="task_category" required>
+                <input type="text" class="form-control" id="task_category" name="task_category" value="{{ task.task_category }}" required>
             </div>
 
-            <!-- Duration -->
-            <div class="mb-3">
-                <label for="duration" class="form-label">Duration (HH:MM)</label>
-                <input type="text" value="{{ tasks.duration }}" name="duration" id="duration" required class="form-control" placeholder="e.g., 02:30">
-            </div>
-            
             <!-- Status -->
             <div class="mb-3">
                 <label for="statusSelect" class="form-label">Status</label>
                 <select class="form-control" id="statusSelect" name="status" required>
-                    <option value="pending" {% if tasks.status == 'pending' %}selected{% endif %}>Pending</option>
-                    <option value="done" {% if tasks.status == 'done' %}selected{% endif %}>Done</option>
+                    <option value="Pending" {% if task.status == 'Pending' %}selected{% endif %}>Pending</option>
+                    <option value="Done" {% if task.status == 'Done' %}selected{% endif %}>Done</option>
                 </select>
             </div>
 
